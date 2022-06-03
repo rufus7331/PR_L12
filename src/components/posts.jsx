@@ -20,7 +20,13 @@ class Posts extends Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:3001/api/posts")
+        fetch("http://localhost:3001/api/posts",
+            {method: "GET",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': ' application/json',
+                    'x-auth-token': localStorage.getItem('token')
+                }})
             .then(res => res.json())
             .then(
                 (result) => {
